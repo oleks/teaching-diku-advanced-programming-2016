@@ -1,0 +1,37 @@
+\begin{frame}[fragile]
+
+\frametitle{Gotta Go Fast? Copy This! (1/2)}
+
+\begin{lstlisting}[escapeinside=@@]
+module M where -- Search and replace " M ".
+
+data M a = M -- Change this.
+
+instance Functor M where
+  fmap f m = m >>= \a -> return (f a)
+
+instance Applicative M where
+  pure = return
+  df <*> dx = df >>= \f -> dx >>= return . f
+\end{lstlisting}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+
+\frametitle{Gotta Go Fast? Copy This! (2/2)}
+
+\begin{lstlisting}[escapeinside=@@]
+instance Monad M where
+  -- return :: a -> M a
+  return = undefined -- This.
+
+  -- (>>=) :: M a -> (a -> M b) -> M b
+  (>>=) = undefined -- And, most notoriously, this.
+
+  -- fail :: String -> M a
+  -- fail _ = -- Also this, if it makes sense.
+\end{lstlisting}
+
+\end{frame}

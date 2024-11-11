@@ -1,0 +1,54 @@
+\begin{frame}[fragile]
+
+\frametitle{Wildcard, First Attempt}
+
+\regex{.}
+
+\begin{lstlisting}
+wild :: MatchParser ()
+wild = do
+  _ <- get
+  return ()
+\end{lstlisting}
+
+\pause
+
+\begin{center}
+
+Works, but awfully verbose\ldots
+
+\pause
+
+\medskip
+
+\lstinline|get :: MatchParser Char|, but we want \lstinline|MatchParser ()|
+
+\pause
+
+\medskip
+
+\texttt{MatchParser} is an \texttt{Applicative} \texttt{Functor}
+\texttt{Monad}\ldots
+
+\pause
+
+\medskip
+
+\url{https://www.haskell.org/hoogle/}
+
+\end{center}
+
+\end{frame}
+
+
+\begin{frame}
+
+\frametitle{Wildcard}
+
+\regex{.}
+
+\lstinputlisting[firstline=6,lastline=6]{../src/MatchParser.hs}
+
+\lstinputlisting[firstline=58,lastline=59]{../src/MatchParser.hs}
+
+\end{frame}

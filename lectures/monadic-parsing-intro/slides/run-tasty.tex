@@ -1,0 +1,22 @@
+\begin{frame}[fragile]
+
+\frametitle{Running Tasty Tests}
+
+\lstinputlisting[firstline=25,lastline=29]{../src/Tests.hs}
+
+\vspace{\fill}
+
+\pause
+
+\begin{lstlisting}[language=bash]
+$ stack exec runhaskell -- -Wall Tests.hs
+\end{lstlisting}
+
+\begin{itemize}
+
+\item Add \lstinline[language=bash]|--quickcheck-verbose| to see the data
+actually generated as input by QuickCheck.
+
+\end{itemize}
+
+\end{frame}

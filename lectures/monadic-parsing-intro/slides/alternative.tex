@@ -1,0 +1,36 @@
+\begin{frame}[fragile]
+
+\frametitle{Alternative}
+
+\begin{lstlisting}[escapeinside=@@]
+-- From Control.Applicative.
+class Applicative f => Alternative f where
+    -- | The identity of '<|>'
+    empty :: f a
+    -- | An associative binary operation
+    (<|>) :: f a -> f a -> f a
+@\pause @
+    -- | One or more.
+    some :: f a -> f [a]
+    some v = -- Free!
+    -- | Zero or more.
+    many :: f a -> f [a]
+    many v = -- Free!
+\end{lstlisting}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+
+\frametitle{A Parser with Alternatives}
+
+\lstinputlisting[firstline=3,lastline=4]{../src/MatchParser.hs}
+
+\lstinputlisting[firstline=38,lastline=38]{../src/MatchParser.hs}
+
+\lstinputlisting[firstline=61,lastline=61]{../src/MatchParser.hs}
+
+\lstinputlisting[firstline=64,lastline=72]{../src/MatchParser.hs}
+
+\end{frame}

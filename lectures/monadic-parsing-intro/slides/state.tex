@@ -1,0 +1,47 @@
+\newcommand{\explainState}[0]{%
+  \vspace{\fill}
+
+  \begin{center}
+
+  Read state (\texttt{s}) and produce a value (\texttt{a}) and a new state
+(\texttt{s}).
+
+  \end{center}
+
+  \vspace{\fill}
+}
+
+\begin{frame}[fragile]
+
+\frametitle{The (Reader + Writer =) State Flavour (1/2)}
+
+\explainState{}
+
+\lstinputlisting[firstline=1,lastline=3]{../src/State.hs}
+\lstinputlisting[firstline=14,lastline=19]{../src/State.hs}
+
+\vspace{\fill}
+
+\end{frame}
+
+
+\begin{frame}
+
+\frametitle{The (Reader + Writer =) State Flavour (2/2)}
+
+\explainState{}
+
+\lstinputlisting[firstline=21,lastline=28]{../src/State.hs}
+
+\vspace{\fill}
+
+\end{frame}
+
+
+%\begin{frame}[fragile]
+
+%\frametitle{Example: An Interpreter With \texttt{let}-Bindings}
+
+%\lstinputlisting[firstline=31,lastline=44]{../src/State.hs}
+
+%\end{frame}

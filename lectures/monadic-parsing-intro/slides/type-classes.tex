@@ -1,0 +1,91 @@
+\begin{frame}[fragile]
+
+\frametitle{The good-old \texttt{Functor}}
+
+\begin{lstlisting}
+class Functor f where
+  fmap :: (a -> b) -> f a -> f b
+\end{lstlisting}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+
+\frametitle{The good-old \texttt{Maybe} \texttt{Functor}}
+
+\begin{lstlisting}
+instance Functor Maybe where
+  -- fmap :: (a -> b) -> Maybe a -> Maybe b
+  fmap _ Nothing = Nothing
+  fmap f (Just a) = Just (f a)
+\end{lstlisting}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+
+\frametitle{The good-old \texttt{Applicative} \texttt{Functor}}
+
+\begin{lstlisting}
+class Functor f => Applicative f where
+  pure :: a -> f a
+  (<*>) :: f (a -> b) -> f a -> f b
+\end{lstlisting}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+
+\frametitle{The good-old \texttt{Maybe} \texttt{Applicative} \texttt{Functor}}
+
+\begin{lstlisting}
+instance Applicative Maybe where
+  -- pure :: a -> Maybe a
+  pure = Just
+
+  -- (<*>) :: Maybe (a -> b) -> Maybe a -> Maybe b
+  Nothing  <*> _ = Nothing
+  (Just f) <*> something = fmap f something
+\end{lstlisting}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+
+\frametitle{The good-old \texttt{Applicative} \texttt{Functor} \texttt{Monad}}
+
+\begin{lstlisting}
+class Applicative m => Monad m where
+  return :: a -> m a
+  (>>=)  :: m a -> (a -> m b) -> m b
+
+  fail   :: String -> m a
+  fail = error -- Who put this here!?
+\end{lstlisting}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+
+\frametitle{The good-old \texttt{Applicative} \texttt{Functor} \texttt{Monad}
+\texttt{Maybe}}
+
+\begin{lstlisting}
+instance Monad Maybe where
+  -- return :: a -> Maybe a
+  return a        = Just a
+
+  -- (>>=) :: Maybe a -> (a -> Maybe b) -> Maybe b
+  Just a  >>= f   = f a
+  Nothing >>= _   = Nothing
+
+  -- fail :: String -> Maybe a
+  fail _          = Nothing
+\end{lstlisting}
+
+\end{frame}

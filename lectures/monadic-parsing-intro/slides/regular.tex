@@ -1,0 +1,191 @@
+\newcommand{\regex}[1]{
+
+\vspace{\fill}
+
+\begin{center}
+
+\Large\texttt{/#1/}
+
+\end{center}
+
+\vspace{\fill}
+
+}
+
+
+\begin{frame}
+
+\frametitle{Parsing Theory}
+
+\vspace{\fill}
+
+\begin{center}
+
+Languages can be regular, context-free, context-sensitive, etc.
+
+\end{center}
+
+\vspace{\fill}
+
+\pause
+
+\begin{itemize}
+
+\item Use \texttt{lex} for the regular ones.
+
+\pause
+
+\item Use \texttt{yacc} for the context-free ones.
+
+\pause
+
+\item Use (??) for the context-sensitive ones.
+
+\end{itemize}
+
+\pause
+
+\vspace{\fill}
+
+\begin{center}
+
+Regular $\subset$ Context-Free $\subset$ Context-Sensitive
+
+\end{center}
+
+\vspace{\fill}
+
+\end{frame}
+
+
+\begin{frame}
+
+\vspace{\fill}
+
+\begin{center}
+
+\includegraphics[width=0.9\textwidth]{memes/monads-set-you-free}
+
+\end{center}
+
+\vspace{\fill}
+
+\end{frame}
+
+\begin{frame}
+
+\frametitle{Monadic Parsing Theory}
+
+\lstinputlisting[firstline=15,lastline=18]{../src/Maybe.hs}
+
+\bigskip
+
+\pause
+
+Monadic laws:
+
+\begin{itemize}
+
+\item[1.] \lstinline|return a >>= f == f a|
+
+\item[2.] \lstinline|m >>= return == m|
+
+\item[3.] \lstinline|(m >>= f) >>= g == m >>= \\ a -> f a >>= g|
+
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+
+\vspace{\fill}
+
+\begin{center}
+
+{\Large \textbf{Regular Languages}}
+
+\medskip
+
+(Strings that can be matched by a regular expression.)
+
+\end{center}
+
+\vspace{\fill}
+
+\end{frame}
+
+
+\begin{frame}
+
+\frametitle{Regular Expressions}
+
+\footnotesize
+
+\vspace{\fill}
+
+\begin{center}
+
+\begin{tabular}{rlll}
+\textbf{Name} & \textbf{Example} & \textbf{Matches} & \textbf{Doesn't Match} \\\hline
+Chars & \texttt{/a/} & \texttt{"a"}, \texttt{"ab"} & \texttt{"b"}, \texttt{""} \\
+String & \texttt{/ab/} & \texttt{"ab"}, \texttt{"abc"} & \texttt{"bc"}, \texttt{""} \\
+Character Class & \texttt{/[a-b]/} & \texttt{"a"}, \texttt{"b"} & \texttt{"c"}, \texttt{""} \\
+Wildcard & \texttt{/./} & \texttt{"a"}, \texttt{"b"}, \texttt{"c"} & \texttt{""} \\
+Choice & \texttt{/a|b/} & \texttt{"a"}, \texttt{"b"} & \texttt{"c"}, \texttt{""} \\
+Option & \texttt{/a?/} & \texttt{"a"}, \texttt{"aa"}, \texttt{""} & \\
+Many & \texttt{/.*/} & \texttt{"abc"}, \texttt{".*@\#"}, \texttt{""} & \\
+Some & \texttt{/.+/} & \texttt{"abc"}, \texttt{".*@\#"} & \texttt{""}
+\end{tabular}
+
+\end{center}
+
+\vspace{\fill}
+
+\end{frame}
+
+
+\begin{frame}
+
+\frametitle{\texttt{MatchParser} (1/3)}
+
+\lstinputlisting[firstline=8,lastline=10]{../src/MatchParser.hs}
+
+\begin{center}
+
+A State monad with a Maybe flavour.
+
+\end{center}
+
+\end{frame}
+
+
+\begin{frame}
+
+\frametitle{\texttt{MatchParser} (2/3)}
+
+\lstinputlisting[firstline=19,lastline=31]{../src/MatchParser.hs}
+
+\end{frame}
+
+
+\begin{frame}
+
+\frametitle{\texttt{MatchParser} (3/3)}
+
+\lstinputlisting[firstline=33,lastline=36]{../src/MatchParser.hs}
+
+\pause
+
+\lstinputlisting[firstline=38,lastline=39]{../src/MatchParser.hs}
+
+\end{frame}
+
+
+\begin{frame}
+
+\frametitle{Parsing}
+
+\lstinputlisting[firstline=61,lastline=62]{../src/MatchParser.hs}
+
+\end{frame}

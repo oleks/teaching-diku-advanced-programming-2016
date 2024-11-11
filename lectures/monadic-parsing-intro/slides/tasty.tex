@@ -1,0 +1,59 @@
+\begin{frame}[fragile]
+
+\vspace{\fill}
+
+\begin{center}
+
+{\Large \textbf{Testing}}
+
+\begin{center}
+
+To claim that your code is correct in your assessment, as a minimum, you should
+do some sort of testing.
+
+\bigskip
+
+Your test results should be easily reproducible.
+
+\end{center}
+
+\end{center}
+
+\vspace{\fill}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+
+\frametitle{Tasty}
+
+\vspace{\fill}
+
+\begin{center}
+
+Tasty is a wrapper around other testing frameworks.
+
+\bigskip
+
+\begin{lstlisting}[language=bash]
+$ stack install tasty
+$ stack install tasty-hunit
+$ stack install tasty-quickcheck
+\end{lstlisting}
+
+\begin{center}
+
+\pause
+
+Best to keep tests in a separate module.
+
+\end{center}
+
+\lstinputlisting[firstline=1,lastline=5]{../src/Tests.hs}
+
+\end{center}
+
+\vspace{\fill}
+
+\end{frame}
